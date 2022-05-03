@@ -2,6 +2,7 @@ import { Context } from 'koa'
 import { makeUUID } from '@fangcha/tools'
 import { Logger } from 'log4js'
 import log4js from '@fangcha/logger'
+import { _TinyApp } from './_TinyApp'
 
 export class FangchaSession {
   public readonly sessionId!: string
@@ -43,18 +44,33 @@ export class FangchaSession {
     return {} as any
   }
 
-  // TODO
-  // public getRefererUrl() {
-  //   return this.correctUrl(this.headers['referer'] || '')
-  // }
-  //
-  // public correctUrl(url: string) {
-  //   const matches = url.match(/^(https?:\/\/.*?)\//)
-  //   if (matches) {
-  //     return url.replace(matches[1], BackendApp.baseURL())
-  //   }
-  //   return BackendApp.baseURL()
-  // }
+  public getRefererUrl() {
+    return this.correctUrl(this.headers['referer'] || '')
+  }
+
+  public correctUrl(url: string) {
+    const matches = url.match(/^(https?:\/\/.*?)\//)
+    if (matches) {
+      return url.replace(matches[1], _TinyApp.baseURL)
+    }
+    return _TinyApp.baseURL
+  }
 
   public auth() {}
+
+  public checkVisitorIsAdmin() {
+    return _TinyApp.checkUserIsAdmin(this.curUserStr())
+  }
+
+  public checkVisitorHasPermission(permissionKey: string) {
+    return _TinyApp.checkUserHasPermission(this.curUserStr(), permissionKey)
+  }
+
+  public assertVisitorIsAdmin() {
+    _TinyApp.assertUserIsAdmin(this.curUserStr())
+  }
+
+  public assertVisitorHasPermission(permissionKey: string) {
+    _TinyApp.assertUserHasPermission(this.curUserStr(), permissionKey)
+  }
 }
