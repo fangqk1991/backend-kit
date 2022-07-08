@@ -1,6 +1,7 @@
 import assert from '@fangcha/assert'
+import { PermissionProtocol } from '../basic'
 
-class __TinyApp {
+class __TinyApp implements PermissionProtocol {
   public baseURL: string = ''
 
   public checkUserIsAdmin = (_email: string) => {
@@ -17,6 +18,11 @@ class __TinyApp {
 
   public assertUserHasPermission(email: string, permissionKey: string) {
     assert.ok(this.checkUserHasPermission(email, permissionKey), `${email} 不具备权限 "${permissionKey}"`, 403)
+  }
+
+  public setPermissionProtocol(protocol: PermissionProtocol) {
+    this.checkUserIsAdmin = protocol.checkUserIsAdmin
+    this.checkUserHasPermission = protocol.checkUserHasPermission
   }
 }
 
