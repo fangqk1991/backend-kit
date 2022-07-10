@@ -3,7 +3,7 @@ import { JWTProtocol, PermissionProtocol } from '../basic'
 
 class __TinyApp implements PermissionProtocol {
   public baseURL: string = ''
-  public jwtProtocol?: JWTProtocol
+  public jwtProtocol!: JWTProtocol
 
   public checkUserIsAdmin = (_email: string) => {
     return false
@@ -28,6 +28,8 @@ class __TinyApp implements PermissionProtocol {
   }
 
   public setJWTProtocol(protocol: JWTProtocol) {
+    assert.ok(!!protocol.jwtKey, 'jwtProtocol.jwtKey error', 500)
+    assert.ok(!!protocol.jwtSecret, 'jwtProtocol.jwtSecret error', 500)
     this.jwtProtocol = protocol
     return this
   }
