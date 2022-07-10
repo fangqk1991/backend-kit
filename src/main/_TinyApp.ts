@@ -1,8 +1,9 @@
 import assert from '@fangcha/assert'
-import { PermissionProtocol } from '../basic'
+import { JWTProtocol, PermissionProtocol } from '../basic'
 
 class __TinyApp implements PermissionProtocol {
   public baseURL: string = ''
+  public jwtProtocol?: JWTProtocol
 
   public checkUserIsAdmin = (_email: string) => {
     return false
@@ -23,6 +24,12 @@ class __TinyApp implements PermissionProtocol {
   public setPermissionProtocol(protocol: PermissionProtocol) {
     this.checkUserIsAdmin = protocol.checkUserIsAdmin
     this.checkUserHasPermission = protocol.checkUserHasPermission
+    return this
+  }
+
+  public setJWTProtocol(protocol: JWTProtocol) {
+    this.jwtProtocol = protocol
+    return this
   }
 }
 
