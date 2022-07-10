@@ -15,8 +15,8 @@ export class FangchaAdminSession extends FangchaSession {
   private _jwtCookieStr: string
 
   public constructor(ctx: Context) {
-    assert.ok(!!_TinyApp.jwtProtocol, 'jwtProtocol missing', 500)
     super(ctx)
+    assert.ok(!!_TinyApp.jwtProtocol, 'jwtProtocol missing', 500)
     {
       this._jwtCookieStr = ctx.cookies.get(_TinyApp.jwtProtocol.jwtKey) || ''
       this._authInfo = this.extractAuthInfo()
