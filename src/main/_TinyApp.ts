@@ -1,9 +1,11 @@
 import assert from '@fangcha/assert'
 import { JWTProtocol, PermissionProtocol } from '../basic'
+import { SsoProtocol } from '../basic/SsoProtocol'
 
 class __TinyApp implements PermissionProtocol {
   public baseURL: string = ''
   public jwtProtocol!: JWTProtocol
+  public ssoProtocol!: SsoProtocol
 
   public checkUserIsAdmin = (_email: string) => {
     return false
@@ -31,6 +33,11 @@ class __TinyApp implements PermissionProtocol {
     assert.ok(!!protocol.jwtKey, 'jwtProtocol.jwtKey error', 500)
     assert.ok(!!protocol.jwtSecret, 'jwtProtocol.jwtSecret error', 500)
     this.jwtProtocol = protocol
+    return this
+  }
+
+  public setSsoProtocol(protocol: SsoProtocol) {
+    this.ssoProtocol = protocol
     return this
   }
 }

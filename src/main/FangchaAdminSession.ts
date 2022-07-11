@@ -38,7 +38,7 @@ export class FangchaAdminSession extends FangchaSession {
     }
     const authInfo = (
       verifySign
-        ? jsonwebtoken.verify(this._jwtCookieStr, _TinyApp.jwtProtocol!.jwtSecret)
+        ? jsonwebtoken.verify(this._jwtCookieStr, _TinyApp.jwtProtocol.jwtSecret)
         : jsonwebtoken.decode(this._jwtCookieStr)
     ) as UserCoreInfo
     if (authInfo && authInfo.email) {

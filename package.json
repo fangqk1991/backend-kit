@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/backend-kit",
-  "version": "0.7.4",
+  "version": "0.8.0",
   "description": "Backend Kit.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -28,6 +28,9 @@
     "@types/assert": "^1.5.4",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/koa": "2.0.50",
+    "@types/koa-compose": "^3.2.5",
+    "@types/koa-joi-router": "^5.2.3",
+    "@types/koa-router": "^7.4.0",
     "@types/mocha": "^8.2.2",
     "@types/node": "^17.0.30",
     "@types/shelljs": "^0.8.11",
