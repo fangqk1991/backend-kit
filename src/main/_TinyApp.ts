@@ -12,7 +12,11 @@ class __TinyApp implements PermissionProtocol {
   }
 
   public checkUserHasPermission = (_email: string, _permissionKey: string) => {
-    return true
+    return false
+  }
+
+  public checkUserInAnyGroup = (_email: string, ..._groupIds: string[]) => {
+    return false
   }
 
   public assertUserIsAdmin(email: string) {
@@ -21,6 +25,10 @@ class __TinyApp implements PermissionProtocol {
 
   public assertUserHasPermission(email: string, permissionKey: string) {
     assert.ok(this.checkUserHasPermission(email, permissionKey), `${email} 不具备权限 "${permissionKey}"`, 403)
+  }
+
+  public assertUserInAnyGroup(email: string, ...groupIds: string[]) {
+    assert.ok(this.checkUserInAnyGroup(email, ...groupIds), `${email} 不 "${groupIds.join(' | ')}" 组中`, 403)
   }
 
   public setPermissionProtocol(protocol: PermissionProtocol) {
