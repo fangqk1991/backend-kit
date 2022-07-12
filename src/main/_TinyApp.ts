@@ -34,6 +34,7 @@ class __TinyApp implements PermissionProtocol {
   public setPermissionProtocol(protocol: PermissionProtocol) {
     this.checkUserIsAdmin = protocol.checkUserIsAdmin
     this.checkUserHasPermission = protocol.checkUserHasPermission
+    this.checkUserInAnyGroup = protocol.checkUserInAnyGroup
     return this
   }
 

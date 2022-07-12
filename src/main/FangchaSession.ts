@@ -66,11 +66,19 @@ export class FangchaSession {
     return _TinyApp.checkUserHasPermission(this.curUserStr(), permissionKey)
   }
 
+  public checkVisitorInAnyGroup(...groupIds: string[]) {
+    return _TinyApp.checkUserInAnyGroup(this.curUserStr(), ...groupIds)
+  }
+
   public assertVisitorIsAdmin() {
     _TinyApp.assertUserIsAdmin(this.curUserStr())
   }
 
   public assertVisitorHasPermission(permissionKey: string) {
     _TinyApp.assertUserHasPermission(this.curUserStr(), permissionKey)
+  }
+
+  public assertVisitorInAnyGroup(...groupIds: string[]) {
+    _TinyApp.assertUserInAnyGroup(this.curUserStr(), ...groupIds)
   }
 }
