@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/backend-kit",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Backend Kit.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -34,6 +34,8 @@
     "@types/mocha": "^8.2.2",
     "@types/node": "^17.0.30",
     "@types/shelljs": "^0.8.11",
+    "tunnel": "^0.0.6",
+    "@types/tunnel": "^0.0.2",
     "fc-feed": "^0.17.0",
     "fc-model": "^0.4.2",
     "fc-sql": "^0.28.0",
