@@ -1,4 +1,5 @@
 export * from './FangchaSession'
 export * from './FangchaAdminSession'
+export * from './FangchaApp'
 export * from './_TinyApp'
 export * from './CustomRequestFollower'

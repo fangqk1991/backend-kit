@@ -1,7 +1,7 @@
 import assert from '@fangcha/assert'
 import * as jsonwebtoken from 'jsonwebtoken'
 import { SpecFactory, SwaggerDocItem } from '@fangcha/router'
-import { KitAdminSsoApis } from '../apis/KitAdminSsoApis'
+import { KitAdminSsoApis } from '../apis'
 import { _TinyApp, CustomRequestFollower, FangchaSession } from '../main'
 import { OAuthClient } from '@fangcha/tools/lib/oauth-client'
 
