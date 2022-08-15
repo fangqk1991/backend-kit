@@ -1,10 +1,18 @@
 import { SwaggerDocItem } from '@fangcha/router'
 
 export interface AppProtocol {
+  env: string
+  appName: string
   plugins: AppPluginProtocol[]
+
   checkHealth?: () => Promise<void>
   appDidLoad?: () => Promise<void>
   onLaunchError?: (err: Error) => void
+
+  wecomBotKey?: string
+
+  // baseURL?: string
+  // jwtProtocol?: JWTProtocol
 }
 
 export interface AppPluginProtocol {
