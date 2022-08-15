@@ -2,7 +2,9 @@ import { SwaggerDocItem } from '@fangcha/router'
 
 export interface AppProtocol {
   plugins: AppPluginProtocol[]
-  appDidLoad?: () => void | Promise<void>
+  checkHealth?: () => Promise<void>
+  appDidLoad?: () => Promise<void>
+  onLaunchError?: (err: Error) => void
 }
 
 export interface AppPluginProtocol {
