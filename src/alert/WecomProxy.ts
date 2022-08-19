@@ -1,6 +1,5 @@
 import { AxiosBuilder, axiosPOST } from '@fangcha/app-request'
 import AppError from '@fangcha/app-error'
-import * as assert from 'assert'
 import * as moment from 'moment'
 import { RequestFollower, ServiceProxy } from '@fangcha/tools/lib/request'
 const os = require('os')
@@ -126,7 +125,10 @@ export class WecomProxy extends ServiceProxy {
   }
 
   public async notify(message: string, atAll = false) {
-    assert.ok(!!this._retainedBotKey, '_retainedBotKey 不能为空')
+    if (!this._retainedBotKey) {
+      console.error('_retainedBotKey missing.')
+      return
+    }
     try {
       await this.sendMessage(this._retainedBotKey, message, atAll ? ['@all'] : [])
     } catch (e) {
