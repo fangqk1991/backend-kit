@@ -1,4 +1,5 @@
 import { SwaggerDocItem } from '@fangcha/router'
+import { JWTProtocol } from './JWTProtocol'
 
 export interface AppProtocol {
   env: string
@@ -11,8 +12,8 @@ export interface AppProtocol {
 
   wecomBotKey?: string
 
-  // baseURL?: string
-  // jwtProtocol?: JWTProtocol
+  baseURL?: string
+  jwtProtocol?: JWTProtocol
 }
 
 export interface AppPluginProtocol {
