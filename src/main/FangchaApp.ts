@@ -37,8 +37,8 @@ export class FangchaApp {
     const appDidLoad = this.protocol.appDidLoad || (async () => {})
     await appDidLoad().catch((err) => {
       console.error(err)
-      if (this.protocol.onLaunchError) {
-        this.protocol.onLaunchError(err)
+      if (_FangchaState.botProxy) {
+        _FangchaState.botProxy.notify(['App Loading Error', err.message].join('\n'))
       }
       throw err
     })

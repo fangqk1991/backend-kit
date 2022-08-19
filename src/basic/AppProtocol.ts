@@ -8,7 +8,6 @@ export interface AppProtocol {
 
   checkHealth?: () => Promise<void>
   appDidLoad?: () => Promise<void>
-  onLaunchError?: (err: Error) => void
 
   wecomBotKey?: string
 
