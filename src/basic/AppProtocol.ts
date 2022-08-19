@@ -3,6 +3,8 @@ import { JWTProtocol } from './JWTProtocol'
 
 export interface AppProtocol {
   env: string
+  tags?: string[]
+
   appName: string
   plugins: AppPluginProtocol[]
 

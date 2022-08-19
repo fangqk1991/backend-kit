@@ -13,6 +13,10 @@ export class FangchaApp {
   }
 
   public async launch() {
+    _FangchaState.appName = this.protocol.appName
+    _FangchaState.env = this.protocol.env
+    _FangchaState.tags = this.protocol.tags || []
+
     initLoggerForApp(this.protocol.appName)
 
     if (this.protocol.wecomBotKey) {
