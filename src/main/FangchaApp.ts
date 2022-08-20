@@ -37,6 +37,9 @@ export class FangchaApp {
     if (this.protocol.jwtProtocol) {
       _TinyApp.setJWTProtocol(this.protocol.jwtProtocol)
     }
+    if (this.protocol.basicAuthProtocol) {
+      _TinyApp.basicAuthProtocol = this.protocol.basicAuthProtocol
+    }
 
     const appDidLoad = this.protocol.appDidLoad || (async () => {})
     await appDidLoad().catch((err) => {

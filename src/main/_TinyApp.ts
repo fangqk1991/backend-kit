@@ -1,11 +1,12 @@
 import assert from '@fangcha/assert'
-import { JWTProtocol, PermissionProtocol } from '../basic'
+import { BasicAuthProtocol, JWTProtocol, PermissionProtocol } from '../basic'
 import { SsoProtocol } from '../basic/SsoProtocol'
 
 class __TinyApp implements PermissionProtocol {
   public baseURL: string = ''
   public jwtProtocol!: JWTProtocol
   public ssoProtocol!: SsoProtocol
+  public basicAuthProtocol!: BasicAuthProtocol
 
   public checkUserIsAdmin = (_email: string) => {
     return false
