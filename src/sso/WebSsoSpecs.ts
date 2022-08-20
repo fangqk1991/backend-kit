@@ -2,12 +2,13 @@ import assert from '@fangcha/assert'
 import * as jsonwebtoken from 'jsonwebtoken'
 import { SpecFactory, SwaggerDocItem } from '@fangcha/router'
 import { KitAdminSsoApis } from '../apis'
-import { _TinyApp, CustomRequestFollower } from '../main'
+import { CustomRequestFollower } from '../main'
 import { OAuthClient } from '@fangcha/tools/lib/oauth-client'
 import { _SessionApp, FangchaSession } from '@fangcha/router/lib/session'
+import { _SsoState } from './_SsoState'
 
 const makeOAuthClient = () => {
-  return new OAuthClient(_TinyApp.ssoProtocol.oauthConfig, CustomRequestFollower)
+  return new OAuthClient(_SsoState.ssoProtocol.oauthConfig, CustomRequestFollower)
 }
 
 const factory = new SpecFactory('SSO', { skipAuth: true })
@@ -33,7 +34,7 @@ factory.prepare(KitAdminSsoApis.SSOHandle, async (ctx) => {
   assert.ok(typeof redirectUri === 'string', 'state/redirectUri invalid')
   const ssoProxy = makeOAuthClient()
   const accessToken = await ssoProxy.getAccessTokenFromCode(code as string)
-  const userInfo = await _TinyApp.ssoProtocol.getUserInfo(accessToken)
+  const userInfo = await _SsoState.ssoProtocol.getUserInfo(accessToken)
   const aliveSeconds = 24 * 3600
   const jwt = jsonwebtoken.sign(userInfo, _SessionApp.jwtProtocol.jwtSecret, { expiresIn: aliveSeconds })
   ctx.cookies.set(_SessionApp.jwtProtocol.jwtKey, jwt, { maxAge: aliveSeconds * 1000 })

@@ -1,6 +1,6 @@
 import { SsoProtocol } from '../basic/SsoProtocol'
 
-class __TinyApp {
+class __SsoState {
   public ssoProtocol!: SsoProtocol
 
   public setSsoProtocol(protocol: SsoProtocol) {
@@ -9,4 +9,4 @@ class __TinyApp {
   }
 }
 
-export const _TinyApp = new __TinyApp()
+export const _SsoState = new __SsoState()
