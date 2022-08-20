@@ -5,8 +5,8 @@ import { FangchaSession } from './FangchaSession'
 import { OpenVisitor } from '../basic'
 import { _TinyApp } from './_TinyApp'
 
-export class FangchaOpenSession extends FangchaSession {
-  public visitor!: OpenVisitor
+export class FangchaOpenSession<T = OpenVisitor> extends FangchaSession {
+  public visitor!: T
   public readonly visitorId: string = ''
   protected readonly secret: string = ''
 
@@ -33,7 +33,7 @@ export class FangchaOpenSession extends FangchaSession {
 
   public auth() {
     assert.ok(!!this.visitorId && !!this.secret, 'Authorization missing.', 401)
-    this.visitor = _TinyApp.basicAuthProtocol.findVisitor(this.visitorId, this.secret)
+    this.visitor = _TinyApp.basicAuthProtocol.findVisitor(this.visitorId, this.secret) as any
     assert.ok(!!this.visitor, `visitor[${this.visitorId}] not found.`, 401)
     // if (this.visitor.secureMode) {
     //   const whiteMap = VisitorCenter.whiteIpMapForVisitor(this.visitor)

@@ -1,5 +1,5 @@
 import { OpenVisitor } from './OpenVisitor'
 
-export interface BasicAuthProtocol {
-  findVisitor: (username: string, password: string) => OpenVisitor
+export interface BasicAuthProtocol<T = OpenVisitor> {
+  findVisitor: (username: string, password: string) => T
 }
