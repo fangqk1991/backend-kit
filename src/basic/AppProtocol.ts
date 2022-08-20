@@ -1,6 +1,5 @@
-import { SwaggerDocItem } from '@fangcha/router'
+import { BasicAuthProtocol, SwaggerDocItem } from '@fangcha/router'
 import { JWTProtocol } from './JWTProtocol'
-import { BasicAuthProtocol } from './BasicAuthProtocol'
 
 export interface AppProtocol {
   env: string

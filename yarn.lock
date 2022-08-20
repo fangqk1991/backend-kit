@@ -263,17 +263,10 @@
     moment "^2.24.0"
     shelljs "^0.8.4"
 
-"@fangcha/router@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.3.0.tgz#d68fdbac2fe9a08ccb19da27a9c70e7e4497be1c"
-  integrity sha512-j2bhLpoQsg8ndtunAXRhaZtkti9NTDhlKQ+m6NrlURddUQLZRJuIwchQTtwIN1WeYcGfw6B8BSjrPknWCDa1fw==
-  dependencies:
-    "@fangcha/swagger" "^0.1.0"
-
-"@fangcha/swagger@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/swagger/-/swagger-0.1.0.tgz#75f0b7806916da109d8ddaf16b0942d78a1b134c"
-  integrity sha512-MDtlGlIJffwsunSupt6gc4cK2WMas4KJ+yn64jGQ44yXD/V5QJQ8cGYh3kW5LRqNufMd02VfYFLlUO9lJGEg7w==
+"@fangcha/router@^0.6.0":
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.6.0.tgz#e1c6ebe8915c342b27077ff6fbb31945ea9c998b"
+  integrity sha512-i6eW+v1vIBdUkZlk6GD3hpliu9Z1ifUN4AoS9WjH8fuOa0DJPDQj3dMhW/Y1JrReTvyJ08kUc9PB3JVAzKD3tw==
 
 "@fangcha/tools@^1.19.0":
   version "1.19.0"
