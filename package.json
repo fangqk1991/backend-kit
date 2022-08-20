@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/backend-kit",
-  "version": "0.17.2",
+  "version": "0.18.0",
   "description": "Backend Kit.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -22,7 +22,7 @@
     "@fangcha/generator": "^0.1.1",
     "@fangcha/logger": "^0.2.0",
     "@fangcha/resque": "^1.1.1",
-    "@fangcha/router": "^0.6.0",
+    "@fangcha/router": "^0.7.0",
     "@fangcha/tools": "^1.19.0",
     "@types/ali-oss": "^6.0.10",
     "@types/assert": "^1.5.4",

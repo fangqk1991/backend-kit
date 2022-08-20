@@ -3,7 +3,6 @@ import { _FangchaState } from './_FangchaState'
 import { WecomProxy } from '../alert'
 import { CustomRequestFollower } from './CustomRequestFollower'
 import { initLoggerForApp } from '@fangcha/logger'
-import { _SessionApp } from '@fangcha/router/lib/session'
 
 export class FangchaApp {
   public protocol: AppProtocol
@@ -29,16 +28,6 @@ export class FangchaApp {
       proxy.setAppName(this.protocol.appName)
       _FangchaState.botProxy = proxy
       CustomRequestFollower.botProxy = proxy
-    }
-
-    if (this.protocol.baseURL) {
-      _SessionApp.baseURL = this.protocol.baseURL || ''
-    }
-    if (this.protocol.jwtProtocol) {
-      _SessionApp.setJWTProtocol(this.protocol.jwtProtocol)
-    }
-    if (this.protocol.basicAuthProtocol) {
-      _SessionApp.basicAuthProtocol = this.protocol.basicAuthProtocol
     }
 
     const appDidLoad = this.protocol.appDidLoad || (async () => {})
