@@ -1,5 +1,1 @@
 export * from './AppProtocol'
-export * from './JWTProtocol'
-export * from './PermissionProtocol'
-export * from './SessionProtocol'
-export * from './OpenVisitor'
