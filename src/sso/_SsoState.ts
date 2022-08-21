@@ -1,4 +1,4 @@
-import { SsoProtocol } from '../basic/SsoProtocol'
+import { SsoProtocol } from './SsoProtocol'
 
 class __SsoState {
   public ssoProtocol!: SsoProtocol

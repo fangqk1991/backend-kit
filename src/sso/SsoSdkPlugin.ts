@@ -1,5 +1,5 @@
 import { AppPluginProtocol } from '../basic'
-import { SsoProtocol } from '../basic/SsoProtocol'
+import { SsoProtocol } from './SsoProtocol'
 import { SsoSpecDocItem } from './WebSsoSpecs'
 import { _SsoState } from './_SsoState'
 
