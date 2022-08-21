@@ -47,5 +47,7 @@ export class FangchaApp {
     if (this.protocol.checkHealth) {
       await this.protocol.checkHealth()
     }
+
+    _FangchaState.botProxy.notify(`[${_FangchaState.tags.join(', ')}] App launched.`)
   }
 }
