@@ -238,6 +238,11 @@
     eslint-plugin-vue "^6.1.2"
     prettier "^2.5.1"
 
+"@fangcha/general-job@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@fangcha/general-job/-/general-job-0.3.2.tgz#06dc9150910fdf973c873bec3b370f7064ecd843"
+  integrity sha512-0aT5xAlx0GisYRYX8qhWamfD1rKS5j4n7VHR/5CXh6gHcGZjAlDt1UYxw6OuZLRrIWIlR1YQCX65XsGI7vVPkQ==
+
 "@fangcha/generator@^0.1.1":
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/@fangcha/generator/-/generator-0.1.1.tgz#9b7db45e4c1d7be8925dfd8b3be60953218a4315"
@@ -1725,10 +1730,10 @@ fc-model@^0.4.2:
   resolved "https://registry.yarnpkg.com/fc-model/-/fc-model-0.4.2.tgz#12751aea0b645208756b7b67923dc8c30adedc48"
   integrity sha512-Uiv0DcQeKcJsQ4f24toMDgn5RP/cIIvUq9+YR3EBZS3DjVOmNHzuF0SXDhgqZoG2eOrLEmguoAO/Ri7rFVcl5g==
 
-fc-sql@^0.28.0:
-  version "0.28.0"
-  resolved "https://registry.yarnpkg.com/fc-sql/-/fc-sql-0.28.0.tgz#7655fded34fcb334756e616ac803414633eac743"
-  integrity sha512-dKI+zy3FTZD5kGk9m8XBslWDiO86lKtEtFnG6KYL7XTQevoAMCa1r2fRaShAwUfyt7wcnwcW6nFyqwUSyH4xkQ==
+fc-sql@^0.28.1:
+  version "0.28.1"
+  resolved "https://registry.yarnpkg.com/fc-sql/-/fc-sql-0.28.1.tgz#d5918e33d120b7a0460d92ab883dad9a4f03395b"
+  integrity sha512-Dz8WR0qxXYLJDg2mPJE8gSCL7/tD4hte8PrOUyOPSwadnvONLO9xg3oyh3wQ/z/Q40yBth3aoJMMKKVRL1790A==
   dependencies:
     moment "^2.24.0"
     mysql2 "^1.7.0"
