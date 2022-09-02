@@ -32,6 +32,15 @@ class __FangchaState {
         throw err
       })
   }
+
+  public appInfo() {
+    return {
+      env: this.env,
+      tags: this.tags,
+      codeVersion: this.codeVersion,
+      runningMachine: this.runningMachine,
+    }
+  }
 }
 
 export const _FangchaState = new __FangchaState()
