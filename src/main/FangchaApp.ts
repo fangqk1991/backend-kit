@@ -15,6 +15,7 @@ export class FangchaApp {
     _FangchaState.appName = this.protocol.appName
     _FangchaState.env = this.protocol.env
     _FangchaState.tags = this.protocol.tags || []
+    _FangchaState.retainHealthWord = this.protocol.retainHealthWord || ''
     _FangchaState._checkHealthHandler = this.protocol.checkHealth || (async () => {})
 
     initLoggerForApp(this.protocol.appName)

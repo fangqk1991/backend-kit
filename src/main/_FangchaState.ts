@@ -10,6 +10,7 @@ class __FangchaState {
 
   codeVersion: string = ''
   runningMachine: string = ''
+  retainHealthWord: string = ''
 
   botProxy: WecomProxy = new WecomProxy({})
 
