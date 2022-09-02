@@ -1,5 +1,6 @@
 import { WecomProxy } from '../alert'
 import { logger } from '@fangcha/logger'
+import * as os from 'os'
 
 class __FangchaState {
   appName: string = ''
@@ -7,9 +8,17 @@ class __FangchaState {
   env: string = 'development'
   tags: string[] = []
 
+  codeVersion: string = ''
+  runningMachine: string = ''
+
   botProxy: WecomProxy = new WecomProxy({})
 
   _checkHealthHandler = async () => {}
+
+  constructor() {
+    this.codeVersion = process.env.CODE_VERSION || 'Unknown'
+    this.runningMachine = os.hostname() || 'Unknown'
+  }
 
   async checkHealth() {
     await this._checkHealthHandler()
