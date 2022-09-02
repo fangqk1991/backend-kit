@@ -19,4 +19,5 @@ export interface AppPluginProtocol {
   appWillLoad?: (app: AppProtocol) => void | Promise<void>
   specDocItem?: SwaggerDocItem
   resqueModuleMap?: { [p: string]: any }
+  checkHealth?: () => void | Promise<void>
 }

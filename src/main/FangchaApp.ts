@@ -49,6 +49,11 @@ export class FangchaApp {
     if (this.protocol.checkHealth) {
       await this.protocol.checkHealth()
     }
+    for (const plugin of plugins) {
+      if (plugin.checkHealth) {
+        await plugin.checkHealth()
+      }
+    }
 
     _FangchaState.botProxy.notify(`[${_FangchaState.tags.join(', ')}] App launched.`)
   }
