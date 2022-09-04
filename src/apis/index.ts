@@ -1,1 +1,1 @@
-export * from './KitAdminSsoApis'
+export * from './KitSsoApis'

@@ -1,7 +1,7 @@
 import assert from '@fangcha/assert'
 import * as jsonwebtoken from 'jsonwebtoken'
 import { SpecFactory, SwaggerDocItem } from '@fangcha/router'
-import { KitAdminSsoApis } from '../apis'
+import { KitSsoApis } from '../apis'
 import { CustomRequestFollower } from '../main'
 import { OAuthClient } from '@fangcha/tools/lib/oauth-client'
 import { _SessionApp, FangchaSession } from '@fangcha/router/lib/session'
@@ -13,13 +13,13 @@ const makeOAuthClient = () => {
 
 const factory = new SpecFactory('SSO', { skipAuth: true })
 
-factory.prepare(KitAdminSsoApis.Login, async (ctx) => {
+factory.prepare(KitSsoApis.Login, async (ctx) => {
   const session = ctx.session as FangchaSession
   const ssoProxy = makeOAuthClient()
   ctx.redirect(ssoProxy.getAuthorizeUri(session.getRefererUrl()))
 })
 
-factory.prepare(KitAdminSsoApis.Logout, async (ctx) => {
+factory.prepare(KitSsoApis.Logout, async (ctx) => {
   ctx.cookies.set(_SessionApp.jwtProtocol.jwtKey, '', {
     maxAge: 0,
   })
@@ -28,7 +28,7 @@ factory.prepare(KitAdminSsoApis.Logout, async (ctx) => {
   ctx.redirect(ssoProxy.buildLogoutUrl(session.getRefererUrl()))
 })
 
-factory.prepare(KitAdminSsoApis.SSOHandle, async (ctx) => {
+factory.prepare(KitSsoApis.SSOHandle, async (ctx) => {
   const { code, state: redirectUri } = ctx.request.query
   assert.ok(!!code && typeof code === 'string', 'code invalid.')
   assert.ok(typeof redirectUri === 'string', 'state/redirectUri invalid')

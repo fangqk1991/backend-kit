@@ -1,4 +1,4 @@
-export const KitAdminSsoApis = {
+export const KitSsoApis = {
   Login: {
     method: 'GET',
     route: '/api/v1/login',
