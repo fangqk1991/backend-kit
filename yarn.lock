@@ -1725,10 +1725,10 @@ fc-feed@^0.17.0:
   resolved "https://registry.yarnpkg.com/fc-feed/-/fc-feed-0.17.0.tgz#6712b7b9f0fae808eb90076253bf17823cebdeea"
   integrity sha512-W+IDqXGTxnkNtTsBAFDRhCCLcOwdlkXCNSROASFSymStR4xJy1ufBEt2g8ev5MZWKXxhJkRUWUBGCk8OICMgqA==
 
-fc-model@^0.4.2:
-  version "0.4.2"
-  resolved "https://registry.yarnpkg.com/fc-model/-/fc-model-0.4.2.tgz#12751aea0b645208756b7b67923dc8c30adedc48"
-  integrity sha512-Uiv0DcQeKcJsQ4f24toMDgn5RP/cIIvUq9+YR3EBZS3DjVOmNHzuF0SXDhgqZoG2eOrLEmguoAO/Ri7rFVcl5g==
+fc-model@^0.5.0:
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/fc-model/-/fc-model-0.5.0.tgz#4d11169158609c839ca4dbf3892a40ddfc982b17"
+  integrity sha512-MwwpFd0FSvVLMlEymeNAkauU9aTqLeeY80urn+LNa9CVSkVjtz28bVGB5aD+7JlCf2PtpkAEM/PEA9plFWe5Fg==
 
 fc-sql@^0.28.1:
   version "0.28.1"

@@ -37,7 +37,7 @@
     "@types/shelljs": "^0.8.11",
     "@types/tunnel": "^0.0.2",
     "fc-feed": "^0.17.0",
-    "fc-model": "^0.4.2",
+    "fc-model": "^0.5.0",
     "fc-sql": "^0.28.1",
     "jsonwebtoken": "^8.5.1",
     "log4js": "^6.1.0",
