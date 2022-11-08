@@ -1,12 +1,12 @@
 import { DemoConfig } from '../DemoConfig'
-import { WebAuthSdkPlugin } from '../../src/auth'
-import { FangchaApp } from '../../src'
-import { RouterApp } from '@fangcha/router'
 import { RouterSdkPlugin } from '../../src/router'
+import { RouterApp } from '@fangcha/router'
+import { TypicalSsoSdkPlugin } from '../../src/sso'
+import { FangchaApp } from '../../src'
 
 const app = new FangchaApp({
   env: 'development',
-  appName: 'web-auth',
+  appName: 'sso-demo',
   plugins: [
     RouterSdkPlugin({
       baseURL: DemoConfig.baseURL,
@@ -19,7 +19,7 @@ const app = new FangchaApp({
         jwtSecret: DemoConfig.jwtSecret,
       },
     }),
-    WebAuthSdkPlugin(DemoConfig.AuthSDK),
+    TypicalSsoSdkPlugin(DemoConfig.SsoSDK),
   ],
 })
 app.launch()

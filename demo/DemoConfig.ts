@@ -9,4 +9,5 @@ export const DemoConfig = GlobalAppConfig as {
     usernameRetained: string
     passwordRetained: string
   }
+  SsoSDK: any
 }

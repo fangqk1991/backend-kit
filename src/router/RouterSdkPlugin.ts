@@ -35,6 +35,7 @@ export const RouterSdkPlugin = (options: RouterSdkOptions): AppPluginProtocol =>
       const onRequestError =
         options.onRequestError ||
         ((err, ctx: Koa.Context) => {
+          console.error(err)
           if (ctx.status >= 500) {
             const session = ctx.session as FangchaSession
             _FangchaState.botProxy.notifyApiError({

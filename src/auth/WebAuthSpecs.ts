@@ -30,7 +30,7 @@ factory.prepare(KitAuthApis.Logout, async (ctx) => {
   ctx.cookies.set(_SessionApp.jwtProtocol.jwtKey, '', {
     maxAge: 0,
   })
-  ctx.redirect('/')
+  ctx.status = 200
 })
 
 export const WebAuthSpecs = factory.buildSpecs()
