@@ -5,6 +5,7 @@
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
+    "web-auth-demo": "ts-node-dev --no-notify --ignore-watch node_modules demo/apps/web-auth-demo.ts",
     "test": "nyc mocha --require ts-node/register tests/**/*.test.ts --timeout 1000000 --exit",
     "build": "rm -rf ./lib/ && tsc"
   },
