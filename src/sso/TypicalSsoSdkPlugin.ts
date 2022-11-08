@@ -16,6 +16,6 @@ export const TypicalSsoSdkPlugin = (oauthConfig: OAuthClientConfig & { userInfoU
         },
       })
     },
-    specDocItem: SsoSpecDocItem,
+    specDocItems: [SsoSpecDocItem],
   }
 }

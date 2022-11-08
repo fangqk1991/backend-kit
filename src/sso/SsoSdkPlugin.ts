@@ -8,6 +8,6 @@ export const SsoSdkPlugin = (options: SsoProtocol): AppPluginProtocol => {
     appDidLoad: async () => {
       _SsoState.setSsoProtocol(options)
     },
-    specDocItem: SsoSpecDocItem,
+    specDocItems: [SsoSpecDocItem],
   }
 }
