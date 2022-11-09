@@ -1,6 +1,6 @@
 import { SpecFactory, SwaggerDocItem } from '@fangcha/router'
 import { KitAuthApis } from '../apis'
-import { _SessionApp } from '@fangcha/router/lib/session'
+import { _SessionApp, FangchaSession } from '@fangcha/router/lib/session'
 import * as jsonwebtoken from 'jsonwebtoken'
 import { _WebAuthState } from './_WebAuthState'
 import assert from '@fangcha/assert'
@@ -31,6 +31,19 @@ factory.prepare(KitAuthApis.Logout, async (ctx) => {
     maxAge: 0,
   })
   ctx.status = 200
+})
+
+factory.prepare(KitAuthApis.RedirectLogin, async (ctx) => {
+  const session = ctx.session as FangchaSession
+  ctx.redirect(`/login?redirectUri=${encodeURIComponent(session.getRefererUrl())}`)
+})
+
+factory.prepare(KitAuthApis.RedirectLogout, async (ctx) => {
+  ctx.cookies.set(_SessionApp.jwtProtocol.jwtKey, '', {
+    maxAge: 0,
+  })
+  const session = ctx.session as FangchaSession
+  ctx.redirect(session.getRefererUrl())
 })
 
 export const WebAuthSpecs = factory.buildSpecs()

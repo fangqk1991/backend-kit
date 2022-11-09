@@ -32,4 +32,14 @@ export const KitAuthApis = {
     route: '/api/auth-sdk/v1/logout',
     description: '登出',
   } as Api,
+  RedirectLogin: {
+    method: 'GET',
+    route: '/api-302/auth-sdk/v1/login',
+    description: '登录',
+  } as Api,
+  RedirectLogout: {
+    method: 'GET',
+    route: '/api-302/auth-sdk/v1/logout',
+    description: '登出',
+  } as Api,
 }
