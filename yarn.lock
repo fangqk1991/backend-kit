@@ -293,10 +293,10 @@
     moment "^2.24.0"
     shelljs "^0.8.4"
 
-"@fangcha/router@^0.16.0":
-  version "0.16.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.16.0.tgz#94d18dd1df3bf3295fce695a8a6406d7c7b9fe78"
-  integrity sha512-tNBqUoLxyuMelg+7qJ0b/4FvYmR+EUEDY9FJTJS/uTr5JiKUPukgMFKhwVz19jhM3lgjh3DwTvemfZYVCkw26g==
+"@fangcha/router@^0.18.1":
+  version "0.18.1"
+  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.18.1.tgz#15c904f79d9d880e355566685010a02231af925f"
+  integrity sha512-pNjl0dk4RY6CSBhyAELiWcUcb/rCxHrPsjzUSpyQNlK4hRMVLOfGqGloW8TKEc2VCm8ej5jTIkT4I4H78tmfAw==
 
 "@fangcha/swagger@^0.1.1":
   version "0.1.1"
