@@ -1,6 +1,6 @@
 {
   "name": "@fangcha/backend-kit",
-  "version": "0.34.0",
+  "version": "0.35.0",
   "description": "Backend Kit.",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,6 +17,7 @@
   "author": "fang <me@fangqk.com>",
   "license": "MIT",
   "devDependencies": {
+    "@fangcha/account": "^0.9.0",
     "@fangcha/ali-oss": "^1.2.0",
     "@fangcha/app-error": "^1.5.0",
     "@fangcha/app-request": "^1.6.0",

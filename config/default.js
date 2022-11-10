@@ -3,9 +3,18 @@ module.exports = {
   backendPort: 16130,
   jwtKey: 'backend_kit_jwt',
   jwtSecret: 'some-jwt-secret',
+  database: {
+    host: '127.0.0.1',
+    port: 3306,
+    dialect: 'mysql',
+    database: 'demo_db',
+    username: 'root',
+    password: '',
+  },
   AuthSDK: {
-    usernameRetained: 'admin@example.com',
-    passwordRetained: 'admin',
+    retainedUserData: {
+      'admin@example.com': 'admin',
+    },
   },
   SsoSDK: {
     baseURL: 'https://sso.example.com',

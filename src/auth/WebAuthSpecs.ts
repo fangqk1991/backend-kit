@@ -3,7 +3,8 @@ import { KitAuthApis } from '../apis'
 import { _SessionApp, FangchaSession } from '@fangcha/router/lib/session'
 import * as jsonwebtoken from 'jsonwebtoken'
 import { _WebAuthState } from './_WebAuthState'
-import assert from '@fangcha/assert'
+import { AccountErrorPhrase, CarrierType, VisitorCoreInfo } from '@fangcha/account/lib/common/models'
+import { AppException } from '@fangcha/app-error'
 
 const factory = new SpecFactory('Auth', { skipAuth: true })
 
@@ -12,16 +13,35 @@ factory.prepare(KitAuthApis.Login, async (ctx) => {
     email: string
     password: string
   }
-  assert.ok(_WebAuthState.authProtocol.usernameRetained === params.email, `email error`)
-  assert.ok(_WebAuthState.authProtocol.passwordRetained === params.password, `password error`)
+  params.email = (params.email || '').trim()
+  const userInfo: VisitorCoreInfo = {
+    accountUid: params.email,
+    email: params.email,
+  }
+  let passed = false
+  const userData = _WebAuthState.authProtocol.retainedUserData || {}
+  if (params.email in userData) {
+    if (userData[params.email] !== params.password) {
+      throw AppException.exception(AccountErrorPhrase.PasswordIncorrect)
+    }
+    passed = true
+  }
+  const accountServer = _WebAuthState.authProtocol.accountServer
+  if (accountServer) {
+    const carrier = await accountServer.findCarrier(CarrierType.Email, params.email)
+    if (!carrier) {
+      throw AppException.exception(AccountErrorPhrase.AccountNotExists)
+    }
+    const account = await accountServer.findAccount(carrier.accountUid)
+    account.assertPasswordCorrect(params.password)
+    userInfo.accountUid = account.accountUid
+    passed = true
+  }
+  if (!passed) {
+    throw AppException.exception(AccountErrorPhrase.PasswordIncorrect)
+  }
   const aliveSeconds = 24 * 3600
-  const jwt = jsonwebtoken.sign(
-    {
-      email: params.email,
-    },
-    _SessionApp.jwtProtocol.jwtSecret,
-    { expiresIn: aliveSeconds }
-  )
+  const jwt = jsonwebtoken.sign(userInfo, _SessionApp.jwtProtocol.jwtSecret, { expiresIn: aliveSeconds })
   ctx.cookies.set(_SessionApp.jwtProtocol.jwtKey, jwt, { maxAge: aliveSeconds * 1000 })
   ctx.status = 200
 })

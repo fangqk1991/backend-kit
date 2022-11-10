@@ -5,9 +5,12 @@ export const DemoConfig = GlobalAppConfig as {
   backendPort: number
   jwtKey: string
   jwtSecret: string
+  database: any
   AuthSDK: {
-    usernameRetained: string
-    passwordRetained: string
+    retainedUserData?: {
+      // username -> password
+      [username: string]: string
+    }
   }
   SsoSDK: any
 }

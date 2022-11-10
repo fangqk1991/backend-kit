@@ -1,4 +1,9 @@
+import { AccountServer } from '@fangcha/account'
+
 export interface WebAuthProtocol<T = any> {
-  usernameRetained: string
-  passwordRetained: string
+  retainedUserData?: {
+    // username -> password
+    [username: string]: string
+  }
+  accountServer?: AccountServer
 }
