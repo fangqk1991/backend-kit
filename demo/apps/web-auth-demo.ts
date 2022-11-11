@@ -22,10 +22,13 @@ const app = new FangchaApp({
       },
     }),
     WebAuthSdkPlugin({
-      retainedUserData: DemoConfig.AuthSDK.retainedUserData,
-      accountServer: new AccountServer({
-        database: MyDatabase.demoDB,
-      }),
+      authMode: 'simple',
+      simpleAuth: {
+        retainedUserData: DemoConfig.AuthSDK.retainedUserData,
+        accountServer: new AccountServer({
+          database: MyDatabase.demoDB,
+        }),
+      },
     }),
   ],
 })

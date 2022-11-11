@@ -1,5 +1,5 @@
 module.exports = {
-  baseURL: 'http://localhost:16130',
+  baseURL: 'http://localhost:16129',
   backendPort: 16130,
   jwtKey: 'backend_kit_jwt',
   jwtSecret: 'some-jwt-secret',

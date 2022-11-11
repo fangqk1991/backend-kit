@@ -42,4 +42,9 @@ export const KitAuthApis = {
     route: '/api-302/auth-sdk/v1/logout',
     description: '登出',
   } as Api,
+  RedirectHandleSSO: {
+    method: 'GET',
+    route: '/api-302/auth-sdk/v1/handle-sso',
+    description: '处理 SSO 回调',
+  } as Api,
 }
