@@ -3,7 +3,7 @@ import { KitAuthApis } from '../apis'
 import { _SessionApp, FangchaSession } from '@fangcha/router/lib/session'
 import * as jsonwebtoken from 'jsonwebtoken'
 import { _WebAuthState } from './_WebAuthState'
-import { AccountErrorPhrase, CarrierType, VisitorCoreInfo } from '@fangcha/account/lib/common/models'
+import { AccountErrorPhrase, AuthMode, CarrierType, VisitorCoreInfo } from '@fangcha/account/lib/common/models'
 import { AppException } from '@fangcha/app-error'
 import assert from '@fangcha/assert'
 import { OAuthClient } from '@fangcha/tools/lib/oauth-client'
@@ -29,7 +29,7 @@ factory.prepare(KitAuthApis.Login, async (ctx) => {
   }
   let passed = false
   const simpleAuth = _WebAuthState.authProtocol.simpleAuth!
-  assert.ok(_WebAuthState.authProtocol.authMode === 'simple' && !!simpleAuth, `simpleAuth invalid.`, 500)
+  assert.ok(_WebAuthState.authProtocol.authMode === AuthMode.Simple && !!simpleAuth, `simpleAuth invalid.`, 500)
   const userData = simpleAuth.retainedUserData || {}
   if (params.email in userData) {
     if (userData[params.email] !== params.password) {
@@ -66,7 +66,7 @@ factory.prepare(KitAuthApis.Logout, async (ctx) => {
 
 factory.prepare(KitAuthApis.RedirectLogin, async (ctx) => {
   const session = ctx.session as FangchaSession
-  if (_WebAuthState.authProtocol.authMode === 'sso') {
+  if (_WebAuthState.authProtocol.authMode === AuthMode.SSO) {
     const ssoProxy = makeOAuthClient()
     ctx.redirect(ssoProxy.getAuthorizeUri(session.getRefererUrl()))
   } else {
@@ -81,7 +81,7 @@ factory.prepare(KitAuthApis.RedirectLogout, async (ctx) => {
   const session = ctx.session as FangchaSession
   const refererUrl = session.getRefererUrl()
 
-  if (_WebAuthState.authProtocol.authMode === 'sso') {
+  if (_WebAuthState.authProtocol.authMode === AuthMode.SSO) {
     const ssoProxy = makeOAuthClient()
     ctx.redirect(ssoProxy.buildLogoutUrl(refererUrl))
   } else {

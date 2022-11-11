@@ -5,6 +5,7 @@ import { RouterApp } from '@fangcha/router'
 import { RouterSdkPlugin } from '../../src/router'
 import { AccountServer } from '@fangcha/account'
 import { MyDatabase } from '../services/MyDatabase'
+import { AuthMode } from '@fangcha/account/lib/common/models'
 
 const app = new FangchaApp({
   env: 'development',
@@ -22,7 +23,7 @@ const app = new FangchaApp({
       },
     }),
     WebAuthSdkPlugin({
-      authMode: 'simple',
+      authMode: AuthMode.Simple,
       simpleAuth: {
         retainedUserData: DemoConfig.AuthSDK.retainedUserData,
         accountServer: new AccountServer({

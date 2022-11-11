@@ -1,4 +1,5 @@
 import { AccountServer } from '@fangcha/account'
+import { AuthMode } from '@fangcha/account/lib/common/models'
 import { OAuthClientConfig } from '@fangcha/tools/lib/oauth-client'
 
 export interface SimpleAuthProtocol {
@@ -15,7 +16,7 @@ export interface SsoAuthProtocol<T = any> {
 }
 
 export interface WebAuthProtocol<T = any> {
-  authMode: 'simple' | 'sso'
+  authMode: AuthMode
   simpleAuth?: SimpleAuthProtocol
   ssoAuth?: SsoAuthProtocol<T>
 }
