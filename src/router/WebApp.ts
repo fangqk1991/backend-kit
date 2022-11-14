@@ -18,7 +18,7 @@ export class WebApp extends FangchaApp {
 
     this.routerPlugin = new RouterPlugin({
       ...protocol.routerOptions,
-      routerApp: _RouterState.routerApp,
+      routerApp: routerApp,
     })
     _RouterState.routerPlugin = this.routerPlugin
 

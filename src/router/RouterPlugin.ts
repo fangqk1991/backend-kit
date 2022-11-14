@@ -27,6 +27,9 @@ export class RouterPlugin implements AppPluginProtocol {
   }
 
   public updateOptions(options: Partial<RouterSdkOptions>) {
+    options = {
+      ...options,
+    }
     delete options.routerApp
 
     if (options.baseURL) {
