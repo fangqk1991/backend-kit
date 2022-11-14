@@ -64,7 +64,7 @@ export const RouterSdkPlugin = (options: RouterSdkOptions & { routerApp: RouterA
       for (const plugin of app.plugins) {
         const specDocItems = plugin.specDocItems || []
         specDocItems.forEach((item) => {
-          options.routerApp.addDocItem(item)
+          routerApp.addDocItem(item)
         })
       }
 

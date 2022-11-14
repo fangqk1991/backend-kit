@@ -32,6 +32,13 @@ export class FangchaApp {
       CustomRequestFollower.botProxy = proxy
     }
 
+    const plugins = this.protocol.plugins || []
+    for (const plugin of plugins) {
+      if (plugin.appWillLoad) {
+        await plugin.appWillLoad(this.protocol)
+      }
+    }
+
     const appDidLoad = this.protocol.appDidLoad || (async () => {})
     await appDidLoad().catch((err) => {
       console.error(err)
@@ -41,7 +48,6 @@ export class FangchaApp {
       throw err
     })
 
-    const plugins = this.protocol.plugins || []
     for (const plugin of plugins) {
       await plugin.appDidLoad(this.protocol)
     }
