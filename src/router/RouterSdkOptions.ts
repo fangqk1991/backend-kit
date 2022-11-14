@@ -7,7 +7,8 @@ export interface RouterSdkOptions {
   baseURL: string
 
   backendPort: number
-  routerApp: RouterApp
+
+  routerApp?: RouterApp
   /**
    * @default FangchaSession
    */

@@ -300,10 +300,10 @@
     moment "^2.24.0"
     shelljs "^0.8.4"
 
-"@fangcha/router@^0.19.0":
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.19.0.tgz#2eab2a6f9238b83b83e97aae305d8c883295a988"
-  integrity sha512-gww5foS1fIGYKu8IilklDouRuDlYdkt6PZKW/8uXo7uatG4BI15Fnjl98vCpE0F7+cOIeLpj9AlU9ZIkQkML1g==
+"@fangcha/router@^0.20.0":
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/@fangcha/router/-/router-0.20.0.tgz#0ddda2693db3615ff6569fde9bd3506630e1c0c9"
+  integrity sha512-jPZeogxgv0GB37jiXJUK4XZUvN6aPO0e6x+LOpoAZ8iITb/JdQLzIK9irAnmV56z1VkKC6Ixo+Aiea+PFnDqkA==
 
 "@fangcha/sso-server@^0.14.0":
   version "0.14.0"

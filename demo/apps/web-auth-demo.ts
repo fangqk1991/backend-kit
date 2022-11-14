@@ -2,26 +2,23 @@ import { DemoConfig } from '../DemoConfig'
 import { WebAuthSdkPlugin } from '../../src/auth'
 import { FangchaApp } from '../../src'
 import { RouterApp } from '@fangcha/router'
-import { RouterSdkPlugin } from '../../src/router'
+import { RouterSdkPlugin, WebApp } from '../../src/router'
 import { AccountServer } from '@fangcha/account'
 import { MyDatabase } from '../services/MyDatabase'
 import { AuthMode } from '@fangcha/account/lib/common/models'
 
-const app = new FangchaApp({
+const app = new WebApp({
   env: 'development',
   appName: 'web-auth',
+  routerOptions: {
+    baseURL: DemoConfig.baseURL,
+    backendPort: DemoConfig.backendPort,
+    jwtProtocol: {
+      jwtKey: DemoConfig.jwtKey,
+      jwtSecret: DemoConfig.jwtSecret,
+    },
+  },
   plugins: [
-    RouterSdkPlugin({
-      baseURL: DemoConfig.baseURL,
-      backendPort: DemoConfig.backendPort,
-      routerApp: new RouterApp({
-        docItems: [],
-      }),
-      jwtProtocol: {
-        jwtKey: DemoConfig.jwtKey,
-        jwtSecret: DemoConfig.jwtSecret,
-      },
-    }),
     WebAuthSdkPlugin({
       authMode: AuthMode.Simple,
       simpleAuth: {

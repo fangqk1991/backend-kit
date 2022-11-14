@@ -8,11 +8,17 @@ import assert from '@fangcha/assert'
 import { AppPluginProtocol } from '../basic'
 import { _SessionApp, FangchaAdminSession, FangchaOpenSession, FangchaSession } from '@fangcha/router/lib/session'
 import { _FangchaState } from '../main'
+import { _RouterState } from './_RouterState'
+import { RouterApp } from '@fangcha/router'
 
 const compose = require('koa-compose')
 const bodyParser = require('koa-body')
 
-export const RouterSdkPlugin = (options: RouterSdkOptions): AppPluginProtocol => {
+export const RouterSdkPlugin = (options: RouterSdkOptions & { routerApp: RouterApp }): AppPluginProtocol => {
+  assert.ok(!_RouterState.locked, '_RouterState.locked must be false', 500)
+  _RouterState.locked = true
+  _RouterState.routerApp = options.routerApp
+
   _SessionApp.baseURL = options.baseURL
 
   assert.ok(
