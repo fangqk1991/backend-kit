@@ -4,9 +4,11 @@ import { HealthDocItem } from './retained-specs/HealthSpecs'
 import { KitProfileSpecDocItem } from '../profile'
 import { _RouterState } from './_RouterState'
 import { RouterSdkOptions } from './RouterSdkOptions'
-import { RouterSdkPlugin } from './RouterSdkPlugin'
+import { RouterPlugin } from './RouterPlugin'
 
 export class WebApp extends FangchaApp {
+  routerPlugin: RouterPlugin
+
   public constructor(protocol: AppProtocol & { routerOptions: RouterSdkOptions }) {
     super(protocol)
 
@@ -14,12 +16,12 @@ export class WebApp extends FangchaApp {
     routerApp.addDocItem(HealthDocItem)
     routerApp.addDocItem(KitProfileSpecDocItem)
 
-    this.protocol.plugins = [
-      RouterSdkPlugin({
-        ...protocol.routerOptions,
-        routerApp: _RouterState.routerApp,
-      }),
-      ...this.protocol.plugins,
-    ]
+    this.routerPlugin = new RouterPlugin({
+      ...protocol.routerOptions,
+      routerApp: _RouterState.routerApp,
+    })
+    _RouterState.routerPlugin = this.routerPlugin
+
+    this.protocol.plugins = [this.routerPlugin, ...this.protocol.plugins]
   }
 }
