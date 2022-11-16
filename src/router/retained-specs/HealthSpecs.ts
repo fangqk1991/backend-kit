@@ -1,6 +1,6 @@
-import { RetainedHealthApis } from '@fangcha/router/lib/apis'
 import { SpecFactory } from '@fangcha/router'
 import { _FangchaState } from '../../main'
+import { RetainedHealthApis } from '../../common/apis'
 
 const factory = new SpecFactory('接口基本测试')
 

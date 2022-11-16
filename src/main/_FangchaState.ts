@@ -41,6 +41,8 @@ class __FangchaState {
       runningMachine: this.runningMachine,
     }
   }
+
+  public frontendConfig: any = {}
 }
 
 export const _FangchaState = new __FangchaState()
