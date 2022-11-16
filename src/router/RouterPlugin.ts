@@ -46,6 +46,9 @@ export class RouterPlugin implements AppPluginProtocol {
       _SessionApp.setJWTProtocol(options.jwtProtocol)
     }
     if (options.basicAuthProtocol) {
+      _RouterState.routerApp.updateParams({
+        useBasicAuth: true,
+      })
       _SessionApp.basicAuthProtocol = options.basicAuthProtocol
     }
 
