@@ -6,14 +6,24 @@ import { _RouterState } from './_RouterState'
 import { RouterSdkOptions } from './RouterSdkOptions'
 import { RouterPlugin } from './RouterPlugin'
 import { JwtSessionSpecDocItem } from './retained-specs/JwtSessionSpecs'
+import { SwaggerDocItem } from '@fangcha/router'
+
+interface WebAppExtras {
+  routerOptions: RouterSdkOptions
+  useJwtSpecs?: boolean
+  mainDocItems?: SwaggerDocItem[]
+}
 
 export class WebApp extends FangchaApp {
   routerPlugin: RouterPlugin
 
-  public constructor(protocol: AppProtocol & { useJwtSpecs?: boolean; routerOptions: RouterSdkOptions }) {
+  public constructor(protocol: AppProtocol & WebAppExtras) {
     super(protocol)
 
     const routerApp = _RouterState.routerApp
+    if (protocol.mainDocItems) {
+      routerApp.addDocItem(...protocol.mainDocItems)
+    }
     routerApp.addDocItem(HealthDocItem)
     routerApp.addDocItem(KitProfileSpecDocItem)
     if (protocol.useJwtSpecs) {
