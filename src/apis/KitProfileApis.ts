@@ -1,3 +1,6 @@
+/**
+ * @deprecated
+ */
 export const KitProfileApis = {
   BasicProfileGet: {
     method: 'GET',

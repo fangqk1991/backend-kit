@@ -25,7 +25,6 @@ export class WebApp extends FangchaApp {
       routerApp.addDocItem(...protocol.mainDocItems)
     }
     routerApp.addDocItem(HealthDocItem)
-    routerApp.addDocItem(KitProfileSpecDocItem)
     if (protocol.useJwtSpecs || protocol.routerOptions.jwtProtocol) {
       routerApp.addDocItem(JwtSessionSpecDocItem)
     }

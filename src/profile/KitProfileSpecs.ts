@@ -9,8 +9,14 @@ factory.prepare(KitProfileApis.BasicProfileGet, async (ctx) => {
   ctx.body = session.curUserInfo()
 })
 
+/**
+ * @deprecated
+ */
 export const KitProfileSpecs = factory.buildSpecs()
 
+/**
+ * @deprecated
+ */
 export const KitProfileSpecDocItem: SwaggerDocItem = {
   name: 'SSO',
   pageURL: '/api-docs/v1/profile-sdk',
