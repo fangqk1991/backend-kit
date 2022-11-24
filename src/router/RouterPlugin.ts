@@ -33,7 +33,7 @@ export class RouterPlugin implements AppPluginProtocol {
     delete options.routerApp
 
     if (options.baseURL) {
-      _SessionApp.baseURL = options.baseURL
+      _SessionApp.setBaseURL(options.baseURL)
     }
 
     assert.ok(
