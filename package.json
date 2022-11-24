@@ -17,21 +17,23 @@
   ],
   "author": "fang <me@fangqk.com>",
   "license": "MIT",
-  "devDependencies": {
-    "@fangcha/account": "^0.11.0",
-    "@fangcha/ali-oss": "^1.2.0",
+  "dependencies": {
     "@fangcha/app-error": "^1.5.0",
     "@fangcha/app-request": "^1.6.0",
     "@fangcha/assert": "^1.1.0",
+    "@fangcha/router": "^0.23.0",
+    "@fangcha/tools": "^1.22.0"
+  },
+  "devDependencies": {
+    "@fangcha/account": "^0.11.0",
+    "@fangcha/ali-oss": "^1.2.0",
     "@fangcha/eslint": "^0.3.2",
     "@fangcha/general-job": "^0.3.3",
     "@fangcha/generator": "^0.1.1",
     "@fangcha/logger": "^0.4.0",
     "@fangcha/resque": "^1.3.0",
-    "@fangcha/router": "^0.22.0",
     "@fangcha/sso-server": "^0.14.0",
     "@fangcha/swagger": "^0.1.1",
-    "@fangcha/tools": "^1.22.0",
     "@koa/router": "^12.0.0",
     "@types/ali-oss": "^6.16.6",
     "@types/assert": "^1.5.6",
