@@ -4,7 +4,7 @@ import { RetainedSessionApis } from '../../common/apis'
 import { SessionInfo } from '../../common/models'
 import { _FangchaState } from '../../main'
 
-const factory = new SpecFactory('Session')
+const factory = new SpecFactory('JWT Session')
 
 factory.prepare(RetainedSessionApis.SessionInfoGet, async (ctx) => {
   const session = ctx.session as FangchaJwtSession

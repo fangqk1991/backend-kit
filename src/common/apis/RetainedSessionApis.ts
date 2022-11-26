@@ -4,12 +4,12 @@ export const RetainedSessionApis = {
   SessionInfoGet: {
     method: 'GET',
     route: '/api/session/v1/session-info',
-    description: '获取当前会话信息',
+    description: 'Get session info',
     skipAuth: true,
   } as Api,
   UserInfoGet: {
     method: 'GET',
     route: '/api/session/v1/user-info',
-    description: '获取当前用户信息',
+    description: 'Get user info',
   } as Api,
 }

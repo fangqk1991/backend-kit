@@ -2,7 +2,7 @@ import { SpecFactory } from '@fangcha/router'
 import { _FangchaState } from '../../main'
 import { RetainedHealthApis } from '../../common/apis'
 
-const factory = new SpecFactory('接口基本测试')
+const factory = new SpecFactory('Health Apis')
 
 factory.prepare(RetainedHealthApis.Ping, async (ctx) => {
   ctx.body = 'PONG'

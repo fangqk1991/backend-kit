@@ -4,7 +4,7 @@ export const KitAuthApis = {
   Login: {
     method: 'POST',
     route: '/api/auth-sdk/v1/login',
-    description: '登录',
+    description: 'Login',
     parameters: [
       {
         name: 'bodyData',
@@ -30,21 +30,35 @@ export const KitAuthApis = {
   Logout: {
     method: 'GET',
     route: '/api/auth-sdk/v1/logout',
-    description: '登出',
+    description: 'Logout',
   } as Api,
   RedirectLogin: {
     method: 'GET',
     route: '/api-302/auth-sdk/v1/login',
-    description: '登录',
+    description: 'Login (302)',
   } as Api,
   RedirectLogout: {
     method: 'GET',
     route: '/api-302/auth-sdk/v1/logout',
-    description: '登出',
+    description: 'Logout (302)',
   } as Api,
   RedirectHandleSSO: {
     method: 'GET',
     route: '/api-302/auth-sdk/v1/handle-sso',
-    description: '处理 SSO 回调',
+    description: 'AuthorizationCode handler (302)',
+    parameters: [
+      {
+        name: 'code',
+        type: 'string',
+        in: 'query',
+        description: 'AuthorizationCode',
+      },
+      {
+        name: 'state',
+        type: 'string',
+        in: 'query',
+        description: 'State',
+      },
+    ],
   } as Api,
 }

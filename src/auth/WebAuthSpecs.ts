@@ -108,7 +108,7 @@ factory.prepare(KitAuthApis.RedirectHandleSSO, async (ctx) => {
 export const WebAuthSpecs = factory.buildSpecs()
 
 export const WebAuthSpecDocItem: SwaggerDocItem = {
-  name: 'Login',
+  name: 'Web Auth',
   pageURL: '/api-docs/v1/auth-sdk',
   specs: WebAuthSpecs,
 }
