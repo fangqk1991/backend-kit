@@ -13,6 +13,6 @@ const app = new WebApp({
       jwtSecret: DemoConfig.jwtSecret,
     },
   },
-  plugins: [TypicalSsoSdkPlugin(DemoConfig.SsoSDK)],
+  plugins: [TypicalSsoSdkPlugin(DemoConfig.AuthSDK.oauthConfig)],
 })
 app.launch()

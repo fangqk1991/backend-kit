@@ -8,11 +8,24 @@ import { AppException } from '@fangcha/app-error'
 import assert from '@fangcha/assert'
 import { OAuthClient } from '@fangcha/tools/lib/oauth-client'
 import { CustomRequestFollower } from '../main'
+import { Context } from 'koa'
 
-const makeOAuthClient = () => {
+const makeOAuthClient = (ctx: Context) => {
   const ssoAuth = _WebAuthState.authProtocol.ssoAuth!
   assert.ok(!!ssoAuth, `ssoAuth invalid.`, 500)
-  return new OAuthClient(ssoAuth.oauthConfig, CustomRequestFollower)
+  let callbackUri = ssoAuth.oauthConfig.callbackUri
+  const matches = ssoAuth.oauthConfig.callbackUri.match(/^(https?:\/\/.*?)\//)
+  if (matches) {
+    const session = ctx.session as FangchaSession
+    callbackUri = session.correctUrl(callbackUri)
+  }
+  return new OAuthClient(
+    {
+      ...ssoAuth.oauthConfig,
+      callbackUri: callbackUri,
+    },
+    CustomRequestFollower
+  )
 }
 
 const factory = new SpecFactory('Auth', { skipAuth: true })
@@ -67,7 +80,7 @@ factory.prepare(KitAuthApis.Logout, async (ctx) => {
 factory.prepare(KitAuthApis.RedirectLogin, async (ctx) => {
   const session = ctx.session as FangchaSession
   if (_WebAuthState.authProtocol.authMode === AuthMode.SSO) {
-    const ssoProxy = makeOAuthClient()
+    const ssoProxy = makeOAuthClient(ctx)
     ctx.redirect(ssoProxy.getAuthorizeUri(session.getRefererUrl()))
   } else {
     ctx.redirect(`/login?redirectUri=${encodeURIComponent(session.getRefererUrl())}`)
@@ -82,7 +95,7 @@ factory.prepare(KitAuthApis.RedirectLogout, async (ctx) => {
   const refererUrl = session.getRefererUrl()
 
   if (_WebAuthState.authProtocol.authMode === AuthMode.SSO) {
-    const ssoProxy = makeOAuthClient()
+    const ssoProxy = makeOAuthClient(ctx)
     ctx.redirect(ssoProxy.buildLogoutUrl(refererUrl))
   } else {
     ctx.redirect(refererUrl)
@@ -94,7 +107,7 @@ factory.prepare(KitAuthApis.RedirectHandleSSO, async (ctx) => {
   assert.ok(!!code && typeof code === 'string', 'code invalid.')
   assert.ok(typeof redirectUri === 'string', 'state/redirectUri invalid')
 
-  const ssoProxy = makeOAuthClient()
+  const ssoProxy = makeOAuthClient(ctx)
   const accessToken = await ssoProxy.getAccessTokenFromCode(code as string)
   const ssoAuth = _WebAuthState.authProtocol.ssoAuth!
   const userInfo = await ssoAuth.getUserInfo(accessToken)

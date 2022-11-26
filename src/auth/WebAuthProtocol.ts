@@ -11,7 +11,7 @@ export interface SimpleAuthProtocol {
 }
 
 export interface SsoAuthProtocol<T = any> {
-  oauthConfig: OAuthClientConfig
+  oauthConfig: OAuthClientConfig & { userInfoURL: string }
   getUserInfo: (accessToken: string) => Promise<T>
 }
 
