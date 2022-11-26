@@ -1,7 +1,6 @@
 import { FangchaApp } from '../main'
 import { AppProtocol } from '../basic'
 import { HealthDocItem } from './retained-specs/HealthSpecs'
-import { KitProfileSpecDocItem } from '../profile'
 import { _RouterState } from './_RouterState'
 import { RouterSdkOptions } from './RouterSdkOptions'
 import { RouterPlugin } from './RouterPlugin'
