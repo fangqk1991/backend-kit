@@ -9,19 +9,20 @@ import assert from '@fangcha/assert'
 import { OAuthClient } from '@fangcha/tools/lib/oauth-client'
 import { CustomRequestFollower } from '../main'
 import { Context } from 'koa'
+import { axiosGET } from '@fangcha/app-request'
 
 const makeOAuthClient = (ctx: Context) => {
   const ssoAuth = _WebAuthState.authProtocol.ssoAuth!
   assert.ok(!!ssoAuth, `ssoAuth invalid.`, 500)
-  let callbackUri = ssoAuth.oauthConfig.callbackUri
-  const matches = ssoAuth.oauthConfig.callbackUri.match(/^(https?:\/\/.*?)\//)
+  let callbackUri = ssoAuth.callbackUri
+  const matches = ssoAuth.callbackUri.match(/^(https?:\/\/.*?)\//)
   if (matches) {
     const session = ctx.session as FangchaSession
     callbackUri = session.correctUrl(callbackUri)
   }
   return new OAuthClient(
     {
-      ...ssoAuth.oauthConfig,
+      ...ssoAuth,
       callbackUri: callbackUri,
     },
     CustomRequestFollower
@@ -110,7 +111,10 @@ factory.prepare(KitAuthApis.RedirectHandleSSO, async (ctx) => {
   const ssoProxy = makeOAuthClient(ctx)
   const accessToken = await ssoProxy.getAccessTokenFromCode(code as string)
   const ssoAuth = _WebAuthState.authProtocol.ssoAuth!
-  const userInfo = await ssoAuth.getUserInfo(accessToken)
+
+  const request = axiosGET(ssoAuth.userInfoURL)
+  request.addHeader('Authorization', `Bearer ${accessToken}`)
+  const userInfo = await request.quickSend()
   const aliveSeconds = 24 * 3600
   const jwt = jsonwebtoken.sign(userInfo, _SessionApp.jwtProtocol.jwtSecret, { expiresIn: aliveSeconds })
   ctx.cookies.set(_SessionApp.jwtProtocol.jwtKey, jwt, { maxAge: aliveSeconds * 1000 })

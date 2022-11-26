@@ -10,13 +10,8 @@ export interface SimpleAuthProtocol {
   accountServer?: AccountServer
 }
 
-export interface SsoAuthProtocol<T = any> {
-  oauthConfig: OAuthClientConfig & { userInfoURL: string }
-  getUserInfo: (accessToken: string) => Promise<T>
-}
-
 export interface WebAuthProtocol<T = any> {
   authMode: AuthMode
   simpleAuth?: SimpleAuthProtocol
-  ssoAuth?: SsoAuthProtocol<T>
+  ssoAuth?: OAuthClientConfig & { userInfoURL: string }
 }
