@@ -13,6 +13,7 @@ const app = new WebApp({
       appName: 'Auth Demo',
       background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)',
       logoCss: 'radial-gradient(circle 248px at center, #16d9e3 0%, #30c7ec 47%, #46aef7 100%)',
+      authMode: DemoConfig.AuthSDK.authMode,
     }
   },
   routerOptions: {
